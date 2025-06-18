@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Multiplication table</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var num=prompt("Enter a number: \n","");
+            var msgstr;
+            if(num>0 && num!=null){
+                msgstr="Multiplication table: <br>";
+                for(i=1;i<=10;i++){
+                    msgstr=msgstr+num+"*1="+num*i+ "<br>";
+                    
+            }
+            document.write(msgstr);
+        }
+        </script>
+        </body>
+        </html>

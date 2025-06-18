@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>JS ARRAYS</title>
+    </head>
+    <body>
+        <script>
+            let reviews=[
+                "It is a great product  I ever seen",
+                "Worst Product",
+                "Not worth the price :( don't buy!!",
+                "Highly recommended!",
+                "Great Product"
+            ];
+            //document.write(reviews);
+            let finalreview=reviews.filter(reviews=>reviews.split(" ").length>5);
+            document.write(finalreview);
+        </script>
+    </body>
+</html>

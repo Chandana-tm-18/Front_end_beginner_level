@@ -1,0 +1,87 @@
+<html>
+    <head>
+    <title>Grocery List App</title>
+    <style>
+        ul{
+            list-style-type: none;
+            padding:0;
+        }
+        li{
+            border:1px solid purple;
+            padding:5px 10px;
+            margin:5px 0;
+            border-radius: 5px;
+            display:flex;
+            justify-content: space-between;
+        }
+        
+    </style>
+    </head>
+    <body>
+        <h1>Grocery List App</h1>
+        <input type="text" id="itemInput"
+        placeholder="Enter grocery item">
+
+        <button id="addItemButton">Add Item</button>
+        <button id="sortButton">SortAlphabetically</button>
+        <ul id="groceryList"></ul>
+
+        <script>
+         
+            let groceryList = [];
+           
+            const itemInput = document.getElementById("itemInput");
+            const addItemButton = document.getElementById("addItemButton");
+            const sortButton = document.getElementById("sortButton");
+            const groceryListElement = document.getElementById("groceryList");
+           
+            //Function to render the grocery list
+            function renderList(){
+                //clear the list element
+                groceryListElement.innerHTML = "";
+
+                // Add each item as an <li> element
+                groceryList.forEach((item,index) => {
+                    const li = document.createElement("li");
+                    li.textContent = item;
+
+                    // create a remove button for ech item
+                    const removeButton = document.createElement("button");
+                    removeButton.textContent = "Remove";
+                    removeButton.addEventListener("click",()=>removeItem(index));
+
+                    //Append the remove button to the <li>
+                    li.appendChild(removeButton);
+
+                    // Append the <li> to the <ul>
+                    groceryListElement.appendChild(li);
+                });
+            }
+           
+            //Function to add an item to the list
+            function addItem(){
+                const newItem = itemInput.value.trim();
+                if(newItem){
+                    groceryList.push(newItem);
+                    itemInput.value = "";
+                    renderList();
+                } else{
+                    alert("Please enter an item");
+                }
+            }
+            //function to remove an item from the list
+            function removeItem(index){
+                //Remove item at the given index
+                groceryList.splice(index,1);
+                renderList();
+            }
+            //function to sort the list alphabetically
+            function sortList(){
+                groceryList.sort();
+                renderList();
+            }
+            sortButton.addEventListener("click",sortList);
+            addItemButton.addEventListener("click",addItem);
+        </script>
+    </body>
+</html>
